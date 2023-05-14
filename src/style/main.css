@@ -40,4 +40,15 @@ body .cursor {
 }
 body .form-control:focus {
   box-shadow: 0 0 10px rgba(60, 75, 220, 0.5215686275) !important;
+}
+body .Main .cards {
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(192, 192, 192, 0.466);
+  transition: all 0.3s ease-in-out;
+  background-color: #fefefe;
+  height: 100%;
+}
+body .Main .cards:hover {
+  box-shadow: 0 0 10px silver;
 }/*# sourceMappingURL=main.css.map */

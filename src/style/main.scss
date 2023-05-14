@@ -48,4 +48,20 @@ body {
       box-shadow: 0 0 10px #3c4bdc85 !important;
     }
   }
+
+  .Main {
+
+    .cards {
+        padding: 10px 15px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(192, 192, 192, 0.466);
+        transition: all .3s ease-in-out;
+        background-color: #fefefe;
+        height: 100%;
+
+        &:hover {
+            box-shadow: 0 0 10px silver;
+        }
+    }
+  }
 }

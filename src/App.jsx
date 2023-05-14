@@ -8,11 +8,11 @@ const App = () => {
 
       {/* PRIVATE ROUTES */}
       <Route element={<PrivateRoute />}>
-        <Route path="/" element={<Main />} />
       </Route>
 
       {/* ROUTES */}
       <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Main />} />
     </Routes>
   );
 };
