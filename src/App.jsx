@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Login, Main } from "./pages";
+import { Dogs, Login, Main } from "./pages";
 import { PrivateRoute } from "./components";
 
 const App = () => {
@@ -13,6 +13,7 @@ const App = () => {
       {/* ROUTES */}
       <Route path="/login" element={<Login />} />
         <Route path="/" element={<Main />} />
+        <Route path="/dogs" element={<Dogs />} />
     </Routes>
   );
 };

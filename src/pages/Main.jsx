@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import NavbarLayout from "../components/NavbarLayout";
 import axios from "axios";
+import { API_JSON } from "../contstants";
 
 const Main = () => {
   const [users, setUsers] = useState([]);
   const getUsers = async () => {
     setTimeout(async () => {
-      const { data } = await axios.get(
-        "https://jsonplaceholder.typicode.com/users"
-      );
+      const { data } = await axios.get(API_JSON);
       setUsers(data);
     }, 1000);
   };
@@ -39,18 +38,42 @@ const Main = () => {
                         alt=""
                       />
                       <div className="ms-3">
-                      <h5 className="">{item.name}</h5>
-                      <h6>@{item.username}</h6>
+                        <h5 className="">{item.name}</h5>
+                        <h6>@{item.username}</h6>
                       </div>
                     </div>
-                    <a className="d-block" target="_blank" href={`mailto:${item.email}`} rel="noreferrer">{item.email}</a>
-                    <a className="d-block" target="_blank" href={`tel:${item.phone}`} rel="noreferrer">{item.phone}</a>
-                    <a className="d-block" target="_blank" href={`http://${item.website}`} rel="noreferrer">{item.website}</a>
+                    <a
+                      className="d-block"
+                      target="_blank"
+                      href={`mailto:${item.email}`}
+                      rel="noreferrer"
+                    >
+                      {item.email}
+                    </a>
+                    <a
+                      className="d-block"
+                      target="_blank"
+                      href={`tel:${item.phone}`}
+                      rel="noreferrer"
+                    >
+                      {item.phone}
+                    </a>
+                    <a
+                      className="d-block"
+                      target="_blank"
+                      href={`http://${item.website}`}
+                      rel="noreferrer"
+                    >
+                      {item.website}
+                    </a>
                   </div>
                 </div>
               ))
             ) : (
-              <div className="spinner spinner-dark spinners-lg"></div>
+              <h5 className="text-center">
+                Loading{" "}
+                <span className="spinner-border spinner-border-sm"></span>
+              </h5>
             )}
           </div>
         </div>
