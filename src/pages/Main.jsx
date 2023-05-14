@@ -1,16 +1,17 @@
+import NavbarLayout from "../components/NavbarLayout";
 
 const Main = () => {
   return (
-    <div className='Main'>
-      <div className="container">
-        <div className="row">
-            <div className="col-12">
-                Main HERe
-            </div>
+    <NavbarLayout>
+      <div className="Main">
+        <div className="container">
+          <div className="row">
+            <div className="col-12">Main HERe</div>
+          </div>
         </div>
       </div>
-    </div>
-  )
-}
+    </NavbarLayout>
+  );
+};
 
-export default Main
+export default Main;
