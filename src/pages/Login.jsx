@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import InputMask from "react-input-mask";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [login, setLogin] = useState("");
   const [loginError, setLoginError] = useState("");
 
@@ -19,7 +23,9 @@ const Login = () => {
   const [birthday, setBirthday] = useState("");
   const [birthdayError, setBirthdayError] = useState("");
 
-  const [user, setUser] = useState([]);
+  const [isLoading, setIsloading] = useState(false);
+
+  const [user, setUser] = useState({});
 
   const onlyLettersAndNumbers = (e) => {
     setLogin(e.target.value);
@@ -41,11 +47,15 @@ const Login = () => {
     const isLetter = /^[A-Za-z0-9]*$/.test(e.target.value);
     const isCapital = /[A-Z]/.test(e.target.value);
     const isNumber = /[0-9]/.test(e.target.value);
-    isLetter && isCapital && isNumber && e.target.value.length >= 8
-      ? setPasswordError("")
-      : setPasswordError(
-          "Alphanumeric characters, at least 8, no spaces, at least one capital letter and number!"
-        );
+    if (isLetter && isCapital && isNumber && e.target.value.length >= 8) {
+      setPasswordError("");
+      return true;
+    } else {
+      setPasswordError(
+        "Alphanumeric characters, at least 8, no spaces, at least one capital letter and number!"
+      );
+      return false;
+    }
   };
 
   const getAge = (e) => {
@@ -58,20 +68,36 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newUser = {
-      id: user.length + 1,
-      login,
-      email,
-      phone,
-      name,
-      birthday,
-    };
-    setUser((prev) => [...prev, newUser]);
-    localStorage.setItem("TEST_USER_INFORMATION", JSON.stringify(user));
+    setIsloading(true);
+    if (
+      loginError.length > 0 ||
+      phoneError.length > 0 ||
+      passwordError.length > 0 ||
+      birthdayError.length > 0 ||
+      (name.length > 0 && name.length < 2)
+    ) {
+      toast.error("Bad request. Try again.");
+      setIsloading(false);
+    } else {
+      const newUser = {
+        id: 1,
+        login,
+        email,
+        phone,
+        name,
+        birthday,
+      };
+      setUser(newUser);
+      toast.success(`Welcome ${login}!`);
+      setTimeout(() => {
+        navigate("/", { replace: true });
+        setIsloading(false);
+      }, 500);
+    }
   };
 
   useEffect(() => {
-    console.log(user);
+    localStorage.setItem("TEST_USER_INFORMATION", JSON.stringify(user));
   }, [user]);
 
   return (
@@ -153,6 +179,7 @@ const Login = () => {
               <h6 className="text-danger mb-4">{birthdayError}</h6>
 
               <button
+                disabled={isLoading}
                 type="submit"
                 className="btn btn-outline-dark d-flex ms-auto px-4 py-2"
               >
