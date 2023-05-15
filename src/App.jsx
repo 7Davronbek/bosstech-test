@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Dogs, Login, Main, Profile } from "./pages";
-import { PrivateRoute } from "./components";
+import { PrivateRoute, ScrollToTop } from "./components";
 import { ToastContainer } from "react-toastify";
 
 const App = () => {
@@ -19,6 +19,7 @@ const App = () => {
       </Routes>
 
       <ToastContainer />
+      <ScrollToTop />
     </>
   );
 };

@@ -1,10 +1,8 @@
-import { Navigate, Outlet } from "react-router-dom"
+import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateRoute = () => {
-    let auth = localStorage.getItem("TEST_USER_INFORMATION")
-    return (
-        auth ? <Outlet /> : <Navigate to='/login' />
-    )
-}
+  let auth = localStorage.getItem("TEST_USER_INFORMATION");
+  return auth ? <Outlet /> : <Navigate to="/login" />;
+};
 
-export default PrivateRoute
+export default PrivateRoute;

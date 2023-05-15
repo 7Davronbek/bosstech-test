@@ -17,7 +17,10 @@ const NavbarLayout = (props) => {
                 <Link to="/">LOGO</Link>
               </h6>
             </div>
-            <div className="col-5 ms-auto d-flex align-items-center justify-content-end">
+            <div className="col-lg-5 ms-auto d-flex align-items-center justify-content-end">
+              <Link className="ms-4" to="/">
+                Main
+              </Link>
               <Link className="ms-4" to="/profile">
                 Profile
               </Link>

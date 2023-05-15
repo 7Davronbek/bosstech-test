@@ -20,7 +20,7 @@ const Main = () => {
       <div className="Main">
         <div className="container">
           <div className="row">
-            <div className="col-12 mb-5">Welcome!</div>
+            <h5 className="col-12 mb-5">Welcome!</h5>
 
             {users.length > 0 ? (
               users.map((item) => (
